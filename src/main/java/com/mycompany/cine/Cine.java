@@ -4,6 +4,8 @@
 
 package com.mycompany.cine;
 
+import com.mycompany.cine.views.Principal;
+
 /**
  *
  * @author mlarr
@@ -11,6 +13,9 @@ package com.mycompany.cine;
 public class Cine {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        Principal ventana = new Principal();
+        ventana.setVisible(true);
+        
     }
 }
