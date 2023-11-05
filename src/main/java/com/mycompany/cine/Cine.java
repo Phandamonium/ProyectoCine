@@ -5,6 +5,7 @@
 package com.mycompany.cine;
 
 import com.mycompany.cine.views.Principal;
+import java.sql.SQLException;
 
 /**
  *
@@ -12,7 +13,7 @@ import com.mycompany.cine.views.Principal;
  */
 public class Cine {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
         Principal ventana = new Principal();
         ventana.setVisible(true);

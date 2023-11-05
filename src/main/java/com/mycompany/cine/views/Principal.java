@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -23,26 +24,26 @@ public class Principal extends JFrame{
     
     JPanel bienvenida;
     JMenuBar barraHerramientas;
-    AgregarPelicula ventanaAgregar;
+    AgregarPelicula agregarPelicula;
     
-    public Principal (){
+    public Principal () throws SQLException{
         iniciarComponentes();
-        this.add(ventanaAgregar);
+        this.add(agregarPelicula);
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.barraHerramientas.setBackground(Color.GRAY);
         this.getContentPane().setBackground(Color.DARK_GRAY);
         this.setJMenuBar(barraHerramientas); 
-        this.getContentPane().add(ventanaAgregar);
+        this.getContentPane().add(agregarPelicula);
         
         iniciarMenu();
         iniciarPanelBienvenida();
     }
     
-    public void iniciarComponentes(){
+    public void iniciarComponentes() throws SQLException{
         barraHerramientas = new JMenuBar();
-        ventanaAgregar= new AgregarPelicula();
+        agregarPelicula = new AgregarPelicula();
         bienvenida = new JPanel();
     }
     
@@ -71,11 +72,9 @@ public class Principal extends JFrame{
         ayuda.add(acercaDe);
         
         agregar.addActionListener(new ActionListener() {
-           
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Agregar");
-                ventanaAgregar.setVisible(true);
+                agregarActionPerformed(e);
             }
         });
         
@@ -93,4 +92,7 @@ public class Principal extends JFrame{
         this.getContentPane().add(bienvenida);
     }
     
+    private void agregarActionPerformed(ActionEvent e){
+        this.agregarPelicula.setVisible(true);
+    }
 }
